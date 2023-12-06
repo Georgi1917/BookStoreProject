@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>MyBookStore</title>
+        <link rel="stylesheet" href="{% static 'css/index-css.css' %}">
+        <link rel="stylesheet" href="{% static 'css/form-style.css' %}">
+    </head>
+    <body>
+        <header>
+            <img src="{% static 'images/istockphoto-1249547007-170667a.jpg' %}" alt="logo">
+            <h1>My Book Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                    <li><a href="{% url 'log in' %}">Log In</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <form>
+                <h1>Log In</h1>
+                <h3>Email Address</h3>
+                {{ form.email }}
+
+                <h3>Password</h3>
+                {{ form.password }}
+            </form>
+        </main>
+    </body>
+</html>
