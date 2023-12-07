@@ -1,0 +1,36 @@
+header {
+    border: 1px solid black;
+    align-items: center;
+    display: flex;
+    background-color: rgba(46, 51, 46, 0.75);
+    color: white;
+    margin-bottom: 220px;
+}
+
+header h1 {
+    margin-left: 10px;
+}
+
+header img {
+    width: 100px;
+    height: 80px;
+    float: left;
+}
+
+main {
+    width: 334px;
+    margin: auto;
+}
+
+main .log-in {
+    border: 2px solid black;
+    width: 330px;
+    text-align: center;
+}
+
+main .sign-in {
+    border: 2px solid black;
+    width: 330px;
+    text-align: center;
+    margin-top: 30px;
+}

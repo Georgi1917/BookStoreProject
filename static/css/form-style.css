@@ -1,7 +1,12 @@
 main form {
     border: 1px solid black;
+    margin: auto;
     padding: 15px;
     margin-top: 10px;
     text-align: center;
     width: 250px;
+}
+
+main form button {
+    margin-top: 10px;
 }

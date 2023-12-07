@@ -7,6 +7,10 @@ from main_app.forms import LogInForm
 # Create your views here.
 
 
+def show_initial_page(request):
+    return render(request, 'html/initial.html')
+
+
 def show_home_page(request):
     return render(request, 'html/index.html')
 

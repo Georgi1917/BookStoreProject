@@ -1,6 +1,9 @@
 from django import forms
 
+from main_app.models import User
 
-class LogInForm(forms.Form):
-    email = forms.EmailField(label="Email Address", max_length=50)
-    password = forms.CharField(label="Password", max_length=30)
+
+class LogInForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'password']
