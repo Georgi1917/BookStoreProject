@@ -7,3 +7,9 @@ class LogInForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password']
+
+
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password']

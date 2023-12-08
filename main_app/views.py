@@ -1,7 +1,9 @@
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from main_app.forms import LogInForm
+from main_app.forms import LogInForm, RegisterForm
+from main_app.models import User
 
 
 # Create your views here.
@@ -29,4 +31,33 @@ def show_log_in(request):
     form = LogInForm()
     context['form'] = form
 
+    if request.method == "POST":
+        email = request.POST["email"]
+
+        password = request.POST["password"]
+
+        user = User.objects.filter(email=email, password=password).first()
+
+        if user is None:
+            return redirect('initial')
+
+        else:
+            return redirect('index')
+
     return render(request, 'html/log-in-form.html', context)
+
+
+def show_register(request):
+    context = {}
+
+    form = RegisterForm()
+    context['form'] = form
+
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+
+        form.save()
+
+        return redirect('index')
+
+    return render(request, 'html/register-form.html', context)
