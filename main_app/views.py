@@ -56,8 +56,15 @@ def show_register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
 
-        form.save()
+        try:
+            form.save()
+        except ValueError as ve:
+            return redirect('error-page')
 
         return redirect('index')
 
     return render(request, 'html/register-form.html', context)
+
+
+def error_page(request):
+    return render(request, 'html/error-page.html')
