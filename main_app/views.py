@@ -13,16 +13,16 @@ def show_initial_page(request):
     return render(request, 'html/initial.html')
 
 
-def show_home_page(request):
-    return render(request, 'html/index.html')
+def show_home_page(request, pk):
+    return render(request, 'html/index.html', {"pk": pk})
 
 
-def show_about_page(request):
-    return render(request, 'html/about.html')
+def show_about_page(request, pk):
+    return render(request, 'html/about.html', {"pk": pk})
 
 
-def show_contacts_page(request):
-    return render(request, 'html/contacts.html')
+def show_contacts_page(request, pk):
+    return render(request, 'html/contacts.html', {"pk": pk})
 
 
 def show_log_in(request):
@@ -39,10 +39,10 @@ def show_log_in(request):
         user = User.objects.filter(email=email, password=password).first()
 
         if user is None:
-            return redirect('initial')
+            return redirect('log-in-error-page')
 
         else:
-            return redirect('index')
+            return redirect('index', pk=user.pk)
 
     return render(request, 'html/log-in-form.html', context)
 
@@ -61,10 +61,16 @@ def show_register(request):
         except ValueError as ve:
             return redirect('error-page')
 
-        return redirect('index')
+        user = User.objects.filter(email=request.POST["email"], username=request.POST["username"]).first()
+
+        return redirect('index', pk=user.pk)
 
     return render(request, 'html/register-form.html', context)
 
 
 def error_page(request):
     return render(request, 'html/error-page.html')
+
+
+def log_in_error_page(request):
+    return render(request, 'html/log-in-error-page.html')

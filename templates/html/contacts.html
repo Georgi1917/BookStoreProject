@@ -13,11 +13,9 @@
             <h1>My Book Store</h1>
             <nav>
                 <ul>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'contacts' %}">Contacts</a></li>
-                    <li><a href="{% url 'log in' %}">Log In</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="{% url 'index' pk=pk %}">Home</a></li>
+                    <li><a href="{% url 'about' pk=pk %}">About</a></li>
+                    <li><a href="{% url 'contacts' pk=pk %}">Contacts</a></li>
                 </ul>
             </nav>
         </header>

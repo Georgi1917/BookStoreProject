@@ -22,10 +22,11 @@ from main_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.show_initial_page, name="initial"),
-    path('home', views.show_home_page, name="index"),
-    path('about', views.show_about_page, name="about"),
-    path('contacts', views.show_contacts_page, name="contacts"),
+    path('<int:pk>/home', views.show_home_page, name="index"),
+    path('<int:pk>/about', views.show_about_page, name="about"),
+    path('<int:pk>/contacts', views.show_contacts_page, name="contacts"),
     path('log-in', views.show_log_in, name="log in"),
     path('register', views.show_register, name="register"),
-    path('error', views.error_page, name="error-page")
+    path('error', views.error_page, name="error-page"),
+    path('log-in-error', views.log_in_error_page, name="log-in-error-page")
 ]
