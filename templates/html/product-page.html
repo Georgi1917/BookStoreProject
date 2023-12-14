@@ -4,8 +4,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>MyBookStore</title>
+        <title>Title</title>
         <link rel="stylesheet" href="{% static 'css/index-css.css' %}">
+        <link rel="stylesheet" href="{% static 'css/product.css' %}">
     </head>
     <body>
         <header>
@@ -22,7 +23,19 @@
         </header>
 
         <main>
-            <p>This is the home page</p>
+            <p>Product Page</p>
+
+            {% if user_products %}
+                {% for up in user_products %}
+                    <div>
+                        <b>{{ up.name }}</b><br>
+                        <b>{{ up.price }}</b><br>
+                        <b>{{ up.description }}</b>
+                    </div>
+                {% endfor %}
+            {% elif not user_products %}
+                <p>There are no products</p>
+            {% endif %}
         </main>
     </body>
 </html>

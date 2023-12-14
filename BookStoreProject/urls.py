@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 
 from main_app import views
+from products import views as v
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +30,6 @@ urlpatterns = [
     path('log-in', views.show_log_in, name="log in"),
     path('register', views.show_register, name="register"),
     path('error', views.error_page, name="error-page"),
-    path('log-in-error', views.log_in_error_page, name="log-in-error-page")
+    path('log-in-error', views.log_in_error_page, name="log-in-error-page"),
+    path('<int:pk>/products', v.show_product_page, name="products")
 ]
