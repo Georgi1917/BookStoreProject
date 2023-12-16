@@ -23,19 +23,22 @@
         </header>
 
         <main>
-            <p>Product Page</p>
-
             {% if user_products %}
                 {% for up in user_products %}
                     <div>
+                        <h3>Name</h3>
                         <b>{{ up.name }}</b><br>
+                        <h3>Price</h3>
                         <b>{{ up.price }}</b><br>
-                        <b>{{ up.description }}</b>
+                        <h3>Description</h3>
+                        <b>{{ up.description }}</b><br>
+                        <span><a href="{% url 'edit-product' pk=pk product_pk=up.pk %}">Edit</a></span>
                     </div>
                 {% endfor %}
             {% elif not user_products %}
                 <p>There are no products</p>
             {% endif %}
+            <span><a href="{% url 'add-product' pk=pk %}">Add Product</a></span>
         </main>
     </body>
 </html>

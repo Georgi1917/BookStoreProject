@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>MyBookStore</title>
+        <link rel="stylesheet" href="{% static 'css/index-css.css' %}">
+        <link rel="stylesheet" href="{% static 'css/form-style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/product-form.css' %}">
+    </head>
+    <body>
+        <header>
+            <img src="{% static 'images/istockphoto-1249547007-170667a.jpg' %}" alt="logo">
+            <h1>My Book Store</h1>
+        </header>
+
+        <main>
+            <form method="POST" action="{% url 'add-product' pk=pk %}">
+                {% csrf_token %}
+                <h1>Add Product</h1>
+                <h3>Product name:</h3>
+                {{ form.name }}
+                <h3>Product price:</h3>
+                {{ form.price }}
+                <h3>Product description:</h3>
+                {{ form.description }}
+                <br>
+                <button name="add-product">Add</button>
+            </form>
+        </main>
+    </body>
+</html>

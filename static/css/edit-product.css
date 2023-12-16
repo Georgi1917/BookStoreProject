@@ -1,0 +1,11 @@
+main form {
+    border: 1px solid black;
+    background-color: #c5deff;
+    padding: 10px;
+    width: 450px;
+    margin-top: 15px;
+}
+
+main form button {
+    margin-top: 10px;
+}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="{% static 'css/index-css.css' %}">
+        <link rel="stylesheet" href="{% static 'css/edit-product.css' %}">
+    </head>
+    <body>
+        <header>
+            <img src="{% static 'images/istockphoto-1249547007-170667a.jpg' %}" alt="logo">
+            <h1>My Book Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' pk=pk %}">Home</a></li>
+                    <li><a href="{% url 'about' pk=pk %}">About</a></li>
+                    <li><a href="{% url 'contacts' pk=pk %}">Contacts</a></li>
+                    <li><a href="{% url 'products' pk=pk %}">My Products</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <form method="POST" action="{% url 'edit-product' pk=pk product_pk=product_pk %}">
+                {% csrf_token %}
+                <h3>Name:</h3>
+                {{ form.name }}
+                <h3>Price:</h3>
+                {{ form.price }}
+                <h3>Description</h3>
+                {{ form.description }}
+                <br>
+                <button name="sign-in">Update</button>
+            </form>
+        </main>
+</body>
+</html>
