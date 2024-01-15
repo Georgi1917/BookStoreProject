@@ -29,9 +29,14 @@ def show_edit_product_page(request, pk, product_pk):
         "form": form
     }
 
-    if form.is_valid():
-        form.save()
-        return redirect('products', pk=pk)
+    if request.method == "POST":
+        if "update" in request.POST:
+            if form.is_valid():
+                form.save()
+                return redirect('products', pk=pk)
+        elif "delete" in request.POST:
+            curr_product.delete()
+            return redirect('products', pk=pk)
 
     return render(request, 'html/edit-product-page.html', context)
 
