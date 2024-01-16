@@ -22,7 +22,18 @@
         </header>
 
         <main>
-            <p>This is the home page</p>
+            {% if not products %}
+                <p>There are no products</p>>
+
+            {% else %}
+                {% for product in products %}
+                    <div>
+                        {{ product.name }}
+                        {{ product.price }}
+                        {{ product.description }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         </main>
     </body>
 </html>

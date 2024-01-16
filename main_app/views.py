@@ -1,9 +1,8 @@
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from main_app.forms import LogInForm, RegisterForm
 from main_app.models import User
+from products.models import Product
 
 
 # Create your views here.
@@ -14,7 +13,9 @@ def show_initial_page(request):
 
 
 def show_home_page(request, pk):
-    return render(request, 'html/index.html', {"pk": pk})
+    all_products = Product.objects.all()
+
+    return render(request, 'html/index.html', {"pk": pk, "products": all_products})
 
 
 def show_about_page(request, pk):
