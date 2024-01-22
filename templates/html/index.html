@@ -22,18 +22,14 @@
         </header>
 
         <main>
-            {% if not products %}
-                <p>There are no products</p>>
+            <form method="post">
+                {% csrf_token %}
 
-            {% else %}
-                {% for product in products %}
-                    <div>
-                        {{ product.name }}
-                        {{ product.price }}
-                        {{ product.description }}
-                    </div>
-                {% endfor %}
-            {% endif %}
+                <input placeholder="Select Product">
+
+                <button>Search</button>
+                
+            </form>
         </main>
     </body>
 </html>
