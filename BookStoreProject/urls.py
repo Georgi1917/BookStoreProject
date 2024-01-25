@@ -33,5 +33,6 @@ urlpatterns = [
     path('log-in-error', views.log_in_error_page, name="log-in-error-page"),
     path('<int:pk>/products', v.show_product_page, name="products"),
     path('<int:pk>/edit-product/<int:product_pk>', v.show_edit_product_page, name="edit-product"),
-    path('<int:pk>/add-product', v.show_product_form, name="add-product")
+    path('<int:pk>/add-product', v.show_product_form, name="add-product"),
+    path('<int:pk>/search-results', views.show_search_results, name="show-results")
 ]

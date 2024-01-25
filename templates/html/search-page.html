@@ -22,15 +22,28 @@
         </header>
 
         <main>
-            <form method="post" action="{% url 'show-results' pk=pk %}">
 
+            <form method="post">
                 {% csrf_token %}
 
                 <input placeholder="Select Product" name="searched">
 
                 <button>Search</button>
-                
+
             </form>
+
+            {% if not searched %}
+                <p>You forgot to search for products</p>
+            {% else %}
+                {% if not products %}
+                    <p>No products by that name</p>
+                {% else %}
+                    {% for product in products %}
+                        <p>{{ product.name }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+
         </main>
     </body>
 </html>

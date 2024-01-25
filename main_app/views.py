@@ -13,9 +13,8 @@ def show_initial_page(request):
 
 
 def show_home_page(request, pk):
-    all_products = Product.objects.all()
 
-    return render(request, 'html/index.html', {"pk": pk, "products": all_products})
+    return render(request, 'html/index.html', {"pk": pk})
 
 
 def show_about_page(request, pk):
@@ -75,3 +74,19 @@ def error_page(request):
 
 def log_in_error_page(request):
     return render(request, 'html/log-in-error-page.html')
+
+
+def show_search_results(request, pk):
+    if request.method == "POST":
+        searched = request.POST["searched"]
+
+        if searched == "":
+            searched_products = []
+
+        else:
+            searched_products = Product.objects.filter(name__icontains=searched)
+
+        return render(request, 'html/search-page.html',
+                      {"pk": pk, "products": searched_products, "searched": searched})
+
+    return render(request, 'html/search-page.html', {"pk": pk})
